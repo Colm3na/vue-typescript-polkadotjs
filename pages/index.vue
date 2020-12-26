@@ -2,8 +2,19 @@
   <div class="container">
     <div>
       <p class="text-center"><Logo /></p>
-      <h1 class="title">Demo Vue.js + typescript + PolkadotJS</h1>
-      <pre class="mt-2">{{ JSON.stringify(stakingInfo, null, 2) }}</pre>
+      <h1 class="title">Nuxt.js + Vue.js + typescript + PolkadotJS demo</h1>
+      <b-input-group class="my-3">
+        <b-form-input
+          v-model="accountId"
+          placeholder="Enter your Kusama address"
+        ></b-form-input>
+        <b-input-group-append>
+          <b-button variant="success" @click="getBalances()"
+            >Get Balance</b-button
+          >
+        </b-input-group-append>
+      </b-input-group>
+      <pre class="mt-2">{{ JSON.stringify(balances, null, 2) }}</pre>
     </div>
   </div>
 </template>
@@ -12,24 +23,23 @@
 import Vue from 'vue'
 import { ApiPromise, WsProvider } from '@polkadot/api'
 const nodeWs = 'wss://kusama-rpc.polkadot.io'
-const authorityId = 'GTzRQPzkcuynHgkEHhsPBFpKdh4sAacVRsnd8vYfPpTMeEY'
 
 export default Vue.extend({
   data() {
     return {
-      stakingInfo: {},
+      api: {} as any,
+      accountId: '' as string,
+      balances: {} as any,
     }
   },
   async created() {
     const wsProvider = new WsProvider(nodeWs)
-    const api = await ApiPromise.create({ provider: wsProvider })
-    this.stakingInfo = await api.derive.staking.query(authorityId, {
-      withDestination: true,
-      withExposure: true,
-      withLedger: true,
-      withNominations: true,
-      withPrefs: true,
-    })
+    this.api = await ApiPromise.create({ provider: wsProvider })
+  },
+  methods: {
+    async getBalances(): Promise<void> {
+      this.balances = await this.api.derive.balances.all(this.accountId)
+    },
   },
 })
 </script>
