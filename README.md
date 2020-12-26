@@ -1,4 +1,4 @@
-# vue-typescript-polkadotjs
+# Nuxt.js + Vue.js + typescript + PolkadotJS demo
 
 ## Build Setup
 
