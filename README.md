@@ -17,4 +17,9 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## References
+
+https://nuxtjs.org/
+https://typescript.nuxtjs.org
+https://github.com/polkadot-js/api
+https://polkadot.js.org/docs/substrate/storage/
