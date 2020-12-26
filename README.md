@@ -19,7 +19,7 @@ $ yarn generate
 
 ## References
 
-https://nuxtjs.org/
-https://typescript.nuxtjs.org
-https://github.com/polkadot-js/api
-https://polkadot.js.org/docs/substrate/storage/
+[Nuxt.js](https://nuxtjs.org/)
+[Nuxt Typescript](https://typescript.nuxtjs.org)
+[Polkadot JS](https://github.com/polkadot-js/api)
+[Substrate storage](https://polkadot.js.org/docs/substrate/storage/)
