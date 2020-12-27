@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <p class="text-center"><Logo /></p>
-      <h1 class="title">Nuxt.js + Vue.js + typescript + PolkadotJS demo</h1>
+      <h1 class="title">Nuxt.js + Vue.js + Typescript + PolkadotJS demo</h1>
       <b-input-group class="my-3">
         <b-form-input
           v-model="accountId"

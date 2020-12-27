@@ -23,3 +23,4 @@ $ yarn generate
 - [Nuxt Typescript](https://typescript.nuxtjs.org)
 - [Polkadot JS](https://github.com/polkadot-js/api)
 - [Substrate storage](https://polkadot.js.org/docs/substrate/storage/)
+- [How to write a Vue.js app completely in typescript](https://blog.logrocket.com/how-to-write-a-vue-js-app-completely-in-typescript/)
