@@ -2,46 +2,24 @@
   <div class="container">
     <div>
       <p class="text-center"><Logo /></p>
-      <h1 class="title">Nuxt.js + Vue.js + Typescript + PolkadotJS demo</h1>
-      <b-input-group class="my-3">
-        <b-form-input
-          v-model="accountId"
-          placeholder="Enter your Kusama address"
-        ></b-form-input>
-        <b-input-group-append>
-          <b-button variant="success" @click="getBalances()"
-            >Get Balance</b-button
-          >
-        </b-input-group-append>
-      </b-input-group>
-      <pre class="mt-2">{{ JSON.stringify(balances, null, 2) }}</pre>
+      <h1 class="title">
+        Nuxt.js + Vue.js + Typescript + Vuelidate + PolkadotJS
+      </h1>
+      <Balances />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { ApiPromise, WsProvider } from '@polkadot/api'
-const nodeWs = 'wss://kusama-rpc.polkadot.io'
+import { Component, Vue } from 'vue-property-decorator'
+import Balances from '@/components/Balances.vue'
 
-export default Vue.extend({
-  data() {
-    return {
-      api: {} as any,
-      accountId: '' as string,
-      balances: {} as any,
-    }
-  },
-  async created() {
-    const wsProvider = new WsProvider(nodeWs)
-    this.api = await ApiPromise.create({ provider: wsProvider })
-  },
-  methods: {
-    async getBalances(): Promise<void> {
-      this.balances = await this.api.derive.balances.all(this.accountId)
-    },
+@Component({
+  components: {
+    Balances,
   },
 })
+export default class App extends Vue {}
 </script>
 
 <style>
