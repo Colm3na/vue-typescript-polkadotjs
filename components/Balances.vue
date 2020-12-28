@@ -22,6 +22,15 @@
     <b-form-invalid-feedback id="address-feedback"
       >Not a valid kusama address
     </b-form-invalid-feedback>
+    <p v-if="accountId">
+      <Identicon
+        :size="24"
+        :theme="'polkadot'"
+        :value="accountId"
+        class="identicon mt-4"
+      />
+      {{ accountId }} is a valid kusama address
+    </p>
     <pre class="mt-4">{{ JSON.stringify(balances, null, 2) }}</pre>
   </div>
 </template>
@@ -33,6 +42,7 @@ import { Component } from 'vue-property-decorator'
 import { required } from 'vuelidate/lib/validators'
 import { checkAddress } from '@polkadot/util-crypto'
 import { ApiPromise, WsProvider } from '@polkadot/api'
+import Identicon from '@polkadot/vue-identicon'
 Component.registerHooks(['validations'])
 Vue.use(Vuelidate)
 
@@ -43,7 +53,11 @@ const isValidPolkadotAddress = (address: string) => {
   return checkAddress(address, addressPrefix)[0]
 }
 
-@Component
+@Component({
+  components: {
+    Identicon,
+  },
+})
 export default class App extends Vue {
   // Data properties
   accountId: string = ''
@@ -106,5 +120,9 @@ pre {
   background-color: rgb(43, 44, 44);
   color: rgb(78, 238, 104);
   padding: 2rem 4rem;
+}
+
+.identicon {
+  display: inline-block;
 }
 </style>
